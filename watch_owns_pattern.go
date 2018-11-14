@@ -25,11 +25,3 @@ func Start() {
 	ctrl.Start(signals.SetupSignalHandler())
 }
 
-type Controller struct {
-	Client client.Client
-}
-
-func (ct *Controller) InjectClient(c client.Client) error {
-	ct.Client = c
-	return nil
-}

@@ -17,6 +17,10 @@ limitations under the License.
 package kubecon_seattle_2018
 
 
+////////////////////////////////////////////////////////////////////
+// Reconcile Request
+////////////////////////////////////////////////////////////////////
+
 // Sample Controller - Get Object Key
 namespace, name, err := cache.SplitMetaNamespaceKey(key)
 if err != nil {
@@ -28,6 +32,9 @@ if err != nil {
 namespace := request.Namespace
 name := request.Name
 
+////////////////////////////////////////////////////////////////////
+// Client
+////////////////////////////////////////////////////////////////////
 
 // Sample Controller - Lookup Object
 foo, err := c.foosLister.Foos(namespace).Get(name)
@@ -35,6 +42,10 @@ foo, err := c.foosLister.Foos(namespace).Get(name)
 // Controller-Runtime - Lookup Object
 foo := v1alpha1.Foo{}
 err := c.Client().Get(context.TODO(), request.NamespacedName, foo)
+
+////////////////////////////////////////////////////////////////////
+// Owners References
+////////////////////////////////////////////////////////////////////
 
 // Sample Controller - Set OwnerRefrence
 OwnerReferences: []metav1.OwnerReference{

@@ -16,17 +16,9 @@ limitations under the License.
 
 package kubecon_seattle_2018
 
-type Controller struct {
-	Client client.Client
-}
-
-func (ct *Controller) InjectClient(c client.Client) error {
-	ct.Client = c
-	return nil
-}
+type Controller struct {}
 
 func Start() {
-	// Watch ReplicaSet Changes and Trigger MyController Reconcile Function
-	ctrl, _ := builder.SimpleController().ForType(&v1alpha1.Foo{}).Build(&Controller{})
+	ctrl, _ := builder.SimpleController().Build(&Controller{})
 	ctrl.Start(signals.SetupSignalHandler())
 }
